@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Qdku7TmA1X9YoqApJtD11OKkOLjYWFetMscJvolnALI=",
+  "Source": "LibraryInventoryAPI",
+  "BasePath": "_content/LibraryInventoryAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

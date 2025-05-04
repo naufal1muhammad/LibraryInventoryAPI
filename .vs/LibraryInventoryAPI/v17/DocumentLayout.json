@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Lenovo\\source\\repos\\LibraryInventoryAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A5501AF2-4AE4-405F-9901-F7DF739F86BE}|LibraryInventoryAPI\\LibraryInventoryAPI.csproj|c:\\users\\lenovo\\source\\repos\\libraryinventoryapi\\libraryinventoryapi\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5501AF2-4AE4-405F-9901-F7DF739F86BE}|LibraryInventoryAPI\\LibraryInventoryAPI.csproj|solutionrelative:libraryinventoryapi\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5501AF2-4AE4-405F-9901-F7DF739F86BE}|LibraryInventoryAPI\\LibraryInventoryAPI.csproj|c:\\users\\lenovo\\source\\repos\\libraryinventoryapi\\libraryinventoryapi\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5501AF2-4AE4-405F-9901-F7DF739F86BE}|LibraryInventoryAPI\\LibraryInventoryAPI.csproj|solutionrelative:libraryinventoryapi\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BooksController.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\LibraryInventoryAPI\\LibraryInventoryAPI\\Controllers\\BooksController.cs",
+              "RelativeDocumentMoniker": "LibraryInventoryAPI\\Controllers\\BooksController.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\LibraryInventoryAPI\\LibraryInventoryAPI\\Controllers\\BooksController.cs",
+              "RelativeToolTip": "LibraryInventoryAPI\\Controllers\\BooksController.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAkwEgAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T02:13:53.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\LibraryInventoryAPI\\LibraryInventoryAPI\\Models\\Book.cs",
+              "RelativeDocumentMoniker": "LibraryInventoryAPI\\Models\\Book.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\LibraryInventoryAPI\\LibraryInventoryAPI\\Models\\Book.cs",
+              "RelativeToolTip": "LibraryInventoryAPI\\Models\\Book.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T02:05:41.781Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
