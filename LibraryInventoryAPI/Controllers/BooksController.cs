@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using LibraryInventoryAPI.Models;
 using System.Collections.Generic;
 using System.Linq;
+using LibraryInventoryAPI.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryInventoryAPI.Controllers
 {
@@ -10,66 +12,77 @@ namespace LibraryInventoryAPI.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private static List<Book> books = new List<Book>
+        /*private static List<Book> books = new List<Book>
         {
             new Book { Id = 1, Title = "The Alchemist", Author = "Paulo Coelho", YearPublished = 1988, Genre = "Fiction", IsAvailable = true },
             new Book { Id = 2, Title = "Sapiens", Author = "Yuval Noah Harari", YearPublished = 2011, Genre = "History", IsAvailable = false }
-        };
+        };*/
+
+        private readonly LibraryContext _context;
+
+        public BooksController(LibraryContext context)
+        {
+            _context = context;
+        }
 
         // GET: api/books
         [HttpGet]
-        public ActionResult<IEnumerable<Book>> GetAllBooks()
+        public async Task<ActionResult<IEnumerable<Book>>> GetAllBooks()
         {
-            return Ok(books);
+            return await _context.Books.ToListAsync();
         }
 
         // GET: api/books/1
         [HttpGet("{id}")]
-        public ActionResult<Book> GetBookById(int id)
+        public async Task<ActionResult<Book>> GetBookById(int id)
         {
-            var book = books.FirstOrDefault(b => b.Id == id);
-            /*books: This is our in-memory list of Book objects.
-             * .FirstOrDefault(...): This is a LINQ method that:
-             * Returns the first item that matches a condition.
-             * If no match is found, it returns null (the "default" value).
-             * b => b.Id == id: This is a lambda expression. For each b (each Book in the list), it checks if b.Id equals the id passed into the method.*/
+            var book = await _context.Books.FindAsync(id);
             if (book == null) return NotFound("Book not found.");
-            return Ok(book);
+            return book;
         }
 
         // POST: api/books
         [HttpPost]
-        public ActionResult AddBook(Book newBook)
+        public async Task<ActionResult<Book>> AddBook(Book newBook)
         {
-            newBook.Id = books.Max(b => b.Id) + 1;
-            books.Add(newBook);
-            return Ok(newBook);
+            _context.Books.Add(newBook);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetBookById), new { id = newBook.Id }, newBook);
         }
 
         // PUT: api/books/1
         [HttpPut("{id}")]
-        public ActionResult UpdateBook(int id, Book updatedBook)
+        public async Task<IActionResult> UpdateBook(int id, Book updatedBook)
         {
-            var book = books.FirstOrDefault(b => b.Id == id);
-            if (book == null) return NotFound("Book not found.");
+            if (id != updatedBook.Id) return BadRequest("ID mismatch.");
 
-            book.Title = updatedBook.Title;
-            book.Author = updatedBook.Author;
-            book.YearPublished = updatedBook.YearPublished;
-            book.Genre = updatedBook.Genre;
-            book.IsAvailable = updatedBook.IsAvailable;
+            _context.Entry(updatedBook).State = EntityState.Modified;
 
-            return Ok(book);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.Books.Any(b => b.Id == id))
+                    return NotFound("Book not found.");
+                else
+                    throw;
+            }
+
+            return Ok($"Book with ID {id} has been modified.");
         }
 
         // DELETE: api/books/1
         [HttpDelete("{id}")]
-        public ActionResult DeleteBook(int id)
+        public async Task<IActionResult> DeleteBook(int id)
         {
-            var book = books.FirstOrDefault(b => b.Id == id);
+            var book = await _context.Books.FindAsync(id);
             if (book == null) return NotFound("Book not found.");
 
-            books.Remove(book);
+            _context.Books.Remove(book);
+            await _context.SaveChangesAsync();
+
             return Ok($"Book with ID {id} deleted.");
         }
     }
